@@ -28,6 +28,16 @@ public class MainLayout extends AppLayout {
         addDrawerContent();
         addHeaderContent();
     }
+//    public MainLayout() {
+//        if (SessionManager.getInstance().isLogin()) {
+//            setPrimarySection(Section.DRAWER);
+//            addToNavbar(true, createHeaderContent());
+//            addToDrawer(createDrawerContent());
+//        } else {
+//            SessionManager.getInstance().logout();
+//        }
+//    }
+
 
     private void addHeaderContent() {
         DrawerToggle toggle = new DrawerToggle();
