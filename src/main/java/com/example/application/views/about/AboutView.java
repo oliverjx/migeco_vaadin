@@ -5,9 +5,7 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.html.H2;
-import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.html.Paragraph;
-import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
@@ -38,7 +36,7 @@ public class AboutView extends VerticalLayout {
     private void dialogRichText(){
         Dialog dialog = new Dialog();
         dialog.add(new RichText(dialog));
-        dialog.setWidth("80%");
+        dialog.setWidth("85%");
         dialog.open();
     }
 

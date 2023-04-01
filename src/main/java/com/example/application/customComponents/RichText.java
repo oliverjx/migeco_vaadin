@@ -15,8 +15,8 @@ import com.vaadin.flow.component.textfield.TextArea;
 @CssImport("./themes/myapp/rich-text-layout.css")
 public class RichText extends CustomField<String> {
 
-    private Dialog dialog;
-    private TextArea textArea;
+    private final Dialog dialog;
+    private final TextArea textArea;
 
     public RichText(Dialog dialog) {
         textArea = new TextArea();
@@ -48,19 +48,17 @@ public class RichText extends CustomField<String> {
         HorizontalLayout footer = new HorizontalLayout();
         btnSave.getStyle().set("color", "white");
         btnSave.getStyle().set("background-color", "rgb(30, 185, 199)");
+        btnSave.getStyle().set("width", "50%");
         btnSave.setText("Salvar");
-        btnSave.setWidthFull();
         btnCancel.getStyle().set("color", "white");
         btnCancel.getStyle().set("background-color", "#E74C3C");
-        btnCancel.setWidthFull();
+        btnCancel.getStyle().set("width", "49%");
         btnCancel.setText("Salir");
         btnCancel.addClickListener(buttonClickEvent -> dialog.close());
         footer.add(btnSave, btnCancel);
         footer.setSizeFull();
-        btnSave.addClickListener(event -> {UI.getCurrent().getPage().executeJs( "" +
-                " var output = document.getElementById(\"editor\").innerHTML;\n" +
-                " return output;").then(String.class, this::setTextField);
-        });
+        btnSave.addClickListener(event -> UI.getCurrent().getPage().executeJs(" var output = document.getElementById(\"editor\").innerHTML;\n" +
+                " return output;").then(String.class, this::setTextField));
         return footer;
     }
 
@@ -68,8 +66,7 @@ public class RichText extends CustomField<String> {
     public void setValue(String t) {
         if (t != null) {
             textArea.setValue(t);
-            UI.getCurrent().getPage().executeJs( "" +
-                    " var output = document.getElementById(\"editor\");\n" +
+            UI.getCurrent().getPage().executeJs( " var output = document.getElementById(\"editor\");\n" +
                     " output.innerHTML = "+t+";");
         }
     }
